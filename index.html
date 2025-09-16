@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>多模式倒计时</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>多模式倒计时</h2>
+
+  <h3>1️⃣ 周年倒计时（每年重复）</h3>
+  <input type="text" id="titleAnniversary" placeholder="事件标题">
+  <input type="date" id="dateAnniversary">
+  <button onclick="addAnniversary()">添加周年倒计时</button>
+
+  <h3>2️⃣ 指定天数倒计时</h3>
+  <input type="text" id="titleDays" placeholder="事件标题">
+  <input type="date" id="dateDays">
+  <input type="number" id="dayOffset" placeholder="天数 X">
+  <button onclick="addDaysCountdown()">添加天数倒计时</button>
+
+  <ul id="eventList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
