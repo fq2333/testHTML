@@ -1,16 +1,28 @@
 let events = []; // 所有事件数组
 
-// 加载本地存储
-window.onload = function() {
-  const saved = localStorage.getItem("events");
-  if (saved) {
-    events = JSON.parse(saved).map(e => {
-      e.date = new Date(e.date);
-      return e;
-    });
+// 预置示例事件
+const defaultEvents = [
+    { type: "anniversary", title: "HHXX表白日", date: new Date("2025-01-14T00:00:00.000Z") },
+    { type: "anniversary", title: "XX生日", date: new Date("1998-08-04T00:00:00.000Z") },
+    { type: "days", title: "XX生日10000天", date: new Date("1998-08-04T00:00:00.000Z"), offset: 10000 }
+  ];
+  
+  // 初始化
+  window.onload = function() {
+    const saved = localStorage.getItem("events");
+    if (saved) {
+      // localStorage 有数据就加载
+      events = JSON.parse(saved).map(e => {
+        e.date = new Date(e.date); // 确保 date 是 Date 对象
+        return e;
+      });
+    } else {
+      // localStorage 没数据，写入示例事件
+      events = defaultEvents;
+      saveEvents();
+    }
     renderEvents();
-  }
-};
+  };
 
 function saveEvents() {
   localStorage.setItem("events", JSON.stringify(events));
